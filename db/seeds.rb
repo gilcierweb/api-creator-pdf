@@ -7,3 +7,21 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+puts "Customer"
+10.times do
+  name = Faker::Lorem.word
+  contract_value = Faker::Number.decimal(l_digits: 2)
+  location = Faker::Address.city
+  phone = Faker::PhoneNumber.phone_number
+
+  customer = Customer.create(name: name, contract_value: contract_value, location: location, phone: phone)
+
+  pdf_url = Faker::Internet.url
+  description = Faker::Lorem.sentence
+
+  document = Document.create(pdf_url: pdf_url, description: description, customer: customer)
+  document
+end
+
+puts "End seed Customer"
