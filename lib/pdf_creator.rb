@@ -5,7 +5,6 @@ module PdfCreator
   def self.generate(variables_replace = {})
 
     template = ActionController::Base.new.render_to_string(
-      # template: "home/test",
       # template: "api/v1/documents/template",
       template: "shared/template",
       layout: "pdf",
@@ -16,7 +15,7 @@ module PdfCreator
     pdf = WickedPdf.new.pdf_from_string(
       template
     )
-
+    file_path = filename_path()
     File.open(file_path, "wb") do |file|
       file.write(pdf)
     end
@@ -26,8 +25,8 @@ module PdfCreator
 
   private
 
-  def self.file_path
-    file_path ||= Rails.root.join("public/pdfs/#{random_name}.pdf")
+  def self.filename_path
+    "public/pdfs/#{random_name}.pdf"
   end
 
   def self.random_name

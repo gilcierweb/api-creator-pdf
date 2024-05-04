@@ -22,3 +22,26 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+```shell
+EDITOR=VIM bundle exec rails credentials:edit # or
+EDITOR=nano bundle exec rails credentials:edit
+```
+
+```shell
+# edit
+#uncomment and add your credentials
+aws:
+   access_key_id: 123
+   secret_access_key: 345
+
+#uncomment and add your credentials 
+#config/storage.yml
+amazon:
+  service: S3
+  access_key_id: <%= Rails.application.credentials.dig(:aws, :access_key_id) %>
+  secret_access_key: <%= Rails.application.credentials.dig(:aws, :secret_access_key) %>
+  bucket: "bucket_name_here"
+  region: "your_region_here"
+
+  ```
