@@ -29,6 +29,7 @@ Things you may want to cover:
 - [Ruby on Rails](https://rubyonrails.org/)
 - [PostgreSQL](https://www.postgresql.org/)
 - [Esbuild](https://esbuild.github.io/)
+- [nodejs](https://nodejs.org/en)
 
 ### Run app
 ```shell
@@ -43,6 +44,7 @@ The API shall have two endpoints:
 - POST/PUT /api/v1/documents/create
 - PATCH/PUT    /api/v1/documents/:id
 - GET / 
+- GET /admin 
 
 #### GET /api/v1/documents/list
 
@@ -107,12 +109,26 @@ The API shall have two endpoints:
 ```
 
 ```shell
+rails routes
+ Prefix Verb     URI Pattern                                                                                       Controller#Action
+                              admin_root GET      /admin(.:format)                                                                                  admin/dashboard#index
+                   list_api_v1_documents GET      /api/v1/documents/list(.:format)                                                                  api/v1/documents#list {:format=>:json}
+                        api_v1_documents POST|PUT /api/v1/documents/create(.:format)                                                                api/v1/documents#create {:format=>:json}
+                                         POST     /api/v1/documents(.:format)                                                                       api/v1/documents#create {:format=>:json}
+                         api_v1_document PATCH    /api/v1/documents/:id(.:format)                                                                   api/v1/documents#update {:format=>:json}
+                                         PUT      /api/v1/documents/:id(.:format)                                                                   api/v1/documents#update {:format=>:json}
+                              home_index GET      /home/index(.:format)                                                                             home#index
+                                    root GET      /                                                                                                 home#index
+                      rails_health_check GET      /up(.:format)                                                                                     rails/health#show
+                                                  /*unmatched(.:format)                                                                             application#route_not_found
+                                                  
 EDITOR=VIM bundle exec rails credentials:edit # or
 EDITOR=nano bundle exec rails credentials:edit
 ```
 
 ```text
-# edit
+# edit files
+
 # Case AWS S3
 # EDITOR=nano bundle exec rails credentials:edit
 #uncomment and add your credentials 
@@ -185,10 +201,21 @@ docker-compose ps
 docker-compose stop
 docker-compose down
 docker-compose run --rm app bash
-docker network create rustnet
+docker network create app-net
 
 # sudo docker rmi --force $(docker images -f "dangling=true" -q)
 
 ```
+
+### Todo project
+
+* [ ] User Authentication
+* [ ] JWT for API
+* [ ] Add Sidekiq for create pdfs in background
+* [ ] Notification for email or sms of pdf create
+* [ ] Docker and Docker Compose
+* [ ] Layer Services
+* [ ] SwaggerUI
+* [ ] Refactor all code
 
 https://gilcierweb.com.br

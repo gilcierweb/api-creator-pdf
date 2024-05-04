@@ -2,7 +2,7 @@ services:
   app:
     container_name: app-rails
     build:
-      context: ./
+      context: .
       dockerfile: Dockerfile
     tty: true
     restart: always
@@ -16,7 +16,7 @@ services:
     depends_on:
       - db
     ports:
-      - '3001:3000'
+      - '3000:3000'
     volumes:
       - .:/app
 
@@ -28,7 +28,7 @@ services:
       POSTGRES_PASSWORD: postgres
       POSTGRES_HOST_AUTH_METHOD: trust
     ports:
-      - '5438:5432'
+      - '5432:5432'
     volumes:
       - db_data:/var/lib/postgresql/data
 
