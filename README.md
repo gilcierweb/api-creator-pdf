@@ -23,6 +23,13 @@ Things you may want to cover:
 
 * ...
 
+### Run app
+```shell
+cd app-doc-sales/
+ ./bin/dev  # run http://localhost:3000/
+ 
+```
+
 ```shell
 EDITOR=VIM bundle exec rails credentials:edit # or
 EDITOR=nano bundle exec rails credentials:edit

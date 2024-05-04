@@ -20,6 +20,8 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 
+require 'shoulda/matchers'
+
 Rails.root.glob('spec/support/**/*.rb').sort.each { |f| require f }
 
 Shoulda::Matchers.configure do |config|
@@ -69,4 +71,5 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
 end

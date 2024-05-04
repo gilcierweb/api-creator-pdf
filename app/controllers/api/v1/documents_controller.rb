@@ -13,7 +13,7 @@ class Api::V1::DocumentsController < ApiController
     respond_to do |format|
       if @document.save
         data = { customer_name: @document.customer.name, contract_value: ActiveSupport::NumberHelper.number_to_currency(@document.customer.contract_value), }
-        pdf = PdfCreator.generate(data)
+        pdf = PdfCreator.generate(data, params[:template])
 
         if Rails.env.production?
           upload_pdf_cloud(pdf)
@@ -65,7 +65,7 @@ class Api::V1::DocumentsController < ApiController
   def document_response
     {
       uuid: @document.id,
-      pdf_url: @document.pdf_url,
+      pdf_url: @document[:pdf_url],
       description: @document.description,
       document_data: [
         customer_name: @document.customer.name,

@@ -4,4 +4,5 @@ class Document < ApplicationRecord
 
   has_one_attached :pdf_url
 
+  validates_presence_of :description
 end
