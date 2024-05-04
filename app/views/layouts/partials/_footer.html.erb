@@ -1,0 +1,24 @@
+<!-- Footer Section Start -->
+<footer class="footer">
+  <div class="footer-body">
+    <div class="right-panel text-center">
+      <p class="fl_left">Copyright &copy; <%= Date.today.year %> - All Rights Reserved -
+        Desenvolvido por: <a href="https://gilcierweb.com.br">GilcierWeb</a> - Site criado com o
+        Framework <a href="https://rubyonrails.org/">Ruby on Rails</a> -
+        <% site_url = "#{request.base_url}" %>
+        <%= link_to "https://transparencyreport.google.com/safe-browsing/search?url=#{site_url}&hl=pt_BR", target: '_blank', title: 'Maior segurança para você' do %>
+          Google Safe Browsing
+        <% end %>
+      </p>
+      <p>Site melhor visualizado com navegadores modernos como:
+        <a href="https://browsehappy.com/" title="Mozilla Firefox" target="_blank">Firefox</a>,
+        <a href="https://browsehappy.com/" title="Opera" target="_blank">Opera</a>,
+        <a href="https://browsehappy.com/" title="Google Chrome" target="_blank">Google Chrome</a>,
+        <a href="https://browsehappy.com/" title="Apple Safari" target="_blank">Apple Safari</a>,
+        <a href="https://browsehappy.com/" title="Brave" target="_blank">Brave</a>,
+        <a href="https://browsehappy.com/" title="Vivaldi" target="_blank">Vivaldi</a>
+      </p>
+    </div>
+  </div>
+</footer>
+<!-- Footer Section End -->

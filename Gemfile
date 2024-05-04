@@ -48,9 +48,8 @@ gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 gem 'aws-sdk-s3', require: false # if storage in aws s3
 # gem 'azure-storage-blob', require: false # if storage in azure
-#gem 'google-cloud-storage', "~> 1.11", require: false
- # if storage in google
-
+# gem 'google-cloud-storage', "~> 1.11", require: false # if storage in google
+gem 'pagy'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

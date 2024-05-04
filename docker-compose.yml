@@ -1,0 +1,36 @@
+services:
+  app:
+    container_name: app-rails
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    tty: true
+    restart: always
+    environment:
+      RAILS_MASTER_KEY: $(cat config/master.key)
+      DATABASE_URL: "postgres://postgres:postgres@db:5432/postgres"
+      DATABASE_HOST: db
+      DATABASE_NAME: postgres
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+    depends_on:
+      - db
+    ports:
+      - '3001:3000'
+    volumes:
+      - .:/app
+
+  db:
+    container_name: database-postgres
+    image: postgres:16.2-alpine
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_HOST_AUTH_METHOD: trust
+    ports:
+      - '5438:5432'
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
