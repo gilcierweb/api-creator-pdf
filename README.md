@@ -126,6 +126,12 @@ EDITOR=VIM bundle exec rails credentials:edit # or
 EDITOR=nano bundle exec rails credentials:edit
 ```
 
+#### File import postman and insomnia 
+```text
+# find me in root path project
+postman_insomnia_app_doc_sales.json
+```
+
 ```text
 # edit files
 
